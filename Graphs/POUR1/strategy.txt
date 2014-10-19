@@ -1,0 +1,23 @@
+If c>max(a,b) output -1.
+Find g=gcd(a,b). If g does not divide c, output -1. Otherwise divide a,b,c by g.
+
+Start with configuration (0,0). Do BFS and check the number of steps required to reach a configuration where atleast one vessel has c litres.
+
+To do BFS, you'll have to keep a check on which configs have been visited and which have not been visited. This can be done by making a boolean table where table[i][j] stores whether the config (i,j) has been visited or not. But this will take up too much space.
+
+Observe that at any given time, atleast one of the vessels will be either empty or full.
+So maintain 4 arrays which will correspond to the entries table[0][], table[a][], table[][0], table[][b].
+There will be an overlap of 4 elements table[0][0], table[a][0], table[0][b], table[a][b].
+
+Reachable configs of (a,b):
+//emptying and filling
+if(a!=0)	(0,b)
+if(a!=capa)	(capa,b)
+if(b!=0)	(a,0)
+if(b!=capb)	(a,capb)
+//pouring water from a to b
+if(a+b<=capb)	(0,a+b)
+else	(a+b-capb,capb)
+//pouring water from b to a
+if(a+b<=capa)	(a+b,0)
+else	(capa,a+b-capa)

@@ -1,0 +1,32 @@
+Let f0(n,k) be the no. of ways k carries are generated from n digits when there is no input carry
+Let f1(n,k) be the no. of ways k carries are generated from n digits when there is an input carry.
+
+f0(n,k)=f0(1,0)*f0(n-1,k)+f0(1,1)*f1(n-1,k-1)		(split number into units digit and the rest)
+f1(n,k)=f1(1,0)*f0(n-1,k)+f1(1,1)*f1(n-1,k-1)		(split number into units digit and the rest)
+But
+f0(n,0)=f0(1,0)*f0(n-1,0)
+f1(n,0)=f1(1,0)*f0(n-1,0)
+(
+this formula isn't neccessary
+f0(n,n)=f0(1,1)*f1(n-1,n-1)
+f1(n,n)=f1(1,1)*f1(n-1,n-1)
+)
+
+f0(1,0)=55
+f0(1,1)=45
+f1(1,0)=45
+f1(1,1)=55
+f0(1,k)=0 where k>=2
+f1(1,k)=0 where k>=2
+
+(
+these are not necessary,
+f0(0,1)=0
+f1(0,1)=0
+f0(0,0)=1
+f1(0,0)=1
+)
+
+Required answer is f0(n,k).
+
+You can prune by making f0[2][k] instead of f0[n][k] and using f[n%2][k] instead of f[n][k]. But by pruning you'll have to calculate values again and again which will give TLE. So just stick to un-pruned way.
