@@ -1,0 +1,77 @@
+Fascinated as he is by the uncanny world of electronics, our friend MKS now decides to launch his own creation --> A N-Digit Carry Finder(an analogue of a N-Bit Binary Adder) which can be used to find the number of times we can have a non-zero carry while adding two numbers(A=AnAn-1...A2A1 and B=BnBn-1...B2B1) having exactly N digits.
+
+It consists of 'N' Full Decimal Adders. The i-th Full Adder takes as input three digits Ai,Bi and Ci-1 and outputs a digit Ci(0 or 1), which is the carry generated on adding the digits Ai and Bi and Ci-1.(Ci=1 if Ai+Bi+Ci-1 >9, otherwise 0).
+
+This Ci is now provided to the next (i+1-th) Full Adder in order to be added with the digits Ai+1 and Bi+1 and also to the accumulator which as the name suggests accumulates the sum of all Cj(1<=j<=i).
+
+Note: C0=0 always and 0<=Ai,Bi<=9.
+
+For Example: Adding two numbers , A=4567 and B=734(or B=0734), the addition proceeds as shown and the accumulator gets a final value of 3.
+
+In the 1st Adder, A1=7,B1=4,C0=0 and A1+B1+C0=11. Therefore Carry C1=1.
+In the 2nd Adder, A2=6,B2=3,C1=1 and A2+B2+C1=10. Therefore Carry C2=1.
+In the 3rd Adder, A3=5,B3=7,C2=1 and A3+B3+C2=13. Therefore Carry C3=1.
+In the 4th Adder, A4=7,B4=0,C3=1 and A4+B4+C3=8. Therefore Carry C4=0.
+
+The Value in the Accumulator=C1+C2+C3+C4=3.
+
+http://www.spoj.com/content/utk1369:utk_kcarry
+
+Your Task is to find the number of ways of getting a value K in the accumulator while adding two numbers containing  at most N digits each. Note that we are adding the numbers in their base 10 representation. Since the total number of ways can be very large, print your answer modulo 1000000007(10^9 +7).Fascinated as he is by the uncanny world of electronics, our friend MKS now decides to launch his own creation --> A N-Digit Carry Finder(an analogue of a N-Bit Binary Adder) which can be used to find the number of times we can have a non-zero carry while adding two numbers(A=AnAn-1...A2A1 and B=BnBn-1...B2B1) having exactly N digits.
+
+It consists of 'N' Full Decimal Adders. The i-th Full Adder takes as input three digits Ai,Bi and Ci-1 and outputs a digit Ci(0 or 1), which is the carry generated on adding the digits Ai and Bi and Ci-1.(Ci=1 if Ai+Bi+Ci-1 >9, otherwise 0).
+
+This Ci is now provided to the next (i+1-th) Full Adder in order to be added with the digits Ai+1 and Bi+1 and also to the accumulator which as the name suggests accumulates the sum of all Cj(1<=j<=i).
+
+Note: C0=0 always and 0<=Ai,Bi<=9.
+
+For Example: Adding two numbers , A=4567 and B=734(or B=0734), the addition proceeds as shown and the accumulator gets a final value of 3.
+
+In the 1st Adder, A1=7,B1=4,C0=0 and A1+B1+C0=11. Therefore Carry C1=1.
+In the 2nd Adder, A2=6,B2=3,C1=1 and A2+B2+C1=10. Therefore Carry C2=1.
+In the 3rd Adder, A3=5,B3=7,C2=1 and A3+B3+C2=13. Therefore Carry C3=1.
+In the 4th Adder, A4=7,B4=0,C3=1 and A4+B4+C3=8. Therefore Carry C4=0.
+The Value in the Accumulator=C1+C2+C3+C4=3.
+
+http://www.spoj.com/content/utk1369:utk_kcarry
+
+Your Task is to find the number of ways of getting a value K in the accumulator while adding two numbers containing  at most N digits each. Note that we are adding the numbers in their base 10 representation. Since the total number of ways can be very large, print your answer modulo 1000000007(10^9 +7).
+
+Input
+The first line of input contains an integer T. Then T lines follow containing two space seperated integers N and K.
+
+Output
+Print the required answer modulo 1000000007(10^9 +7) in the ith line corresponding to the ith Test case .
+
+Constraints:
+1<=T<=500.
+1<=N<=1000.
+1<=K<=N.
+
+Example
+
+Input:
+4
+1 1
+2 1
+2 2
+3 3
+
+Output:
+45
+4500
+2475
+136125
+
+Explanation
+
+Example case 1.
+The carry appears when adding 
+1 and 9, 2 and 9, 3 and 9 ... 9 and 9=9 cases.
+2 and 8,3 and 8,4 and 8 ... 9 and 8=8 cases.
+3 and 7,4 and 7,5 and 7 ... 9 and 7=7 cases.
+.
+.
+.
+9 and 1=1 case.
+There are (9+8+7+6+5+4+3+2+1+0)=45 cases in total and in each case, the carry appears exactly once.
